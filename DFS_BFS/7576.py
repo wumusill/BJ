@@ -42,7 +42,7 @@ elif sum(l_0) >= 1:
     print(-1)
 else:
     print(max(max_l)-1)
-    
+
 ###################################################
 res = 0
 for i in matrix:
