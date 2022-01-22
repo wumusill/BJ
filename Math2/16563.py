@@ -1,3 +1,5 @@
+# 어려운 소인수분해
+
 import sys
 input = sys.stdin.readline
 #
@@ -52,14 +54,13 @@ for num in num_list:
     l[0] = False
     l[1] = False
 
-    for i in range(2, num + 1):
+    for i in range(2, int(num ** 0.5) + 1):
         if l[i] == True:
-            for j in range(2, num // i + 1):
-                l[i * j] = False
+            for j in range(i*2, n, i):
+                l[j] = False
+
             if num % i == 0:
                 num = num // i
                 for _ in range(num // i):
                     print(i, end=' ')
-
     print()
-
