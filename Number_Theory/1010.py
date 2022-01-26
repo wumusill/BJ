@@ -1,11 +1,10 @@
+from math import factorial
 import sys
 input = sys.stdin.readline
 
 m = int(input())
 
 for _ in range(m):
-    res = 1
-    n, r = map(int, input().split())
-    for i in range(r, r-n,-1):
-        res *= i
-    print(res)
+    r, n = map(int, input().split())
+    ans = factorial(n) // (factorial(r) * factorial(n - r))
+    print(ans)
