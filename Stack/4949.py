@@ -1,9 +1,9 @@
 from collections import deque
 
-stack = deque()
 dict = {'(':')', '[':']'}
 
 while True:
+    stack = deque()
     sentence = input()
     if sentence == '.':
         break
@@ -26,8 +26,6 @@ while True:
     else:
         print('no')
 #############################################################################
-# 위는 틀림 아래가 맞음
-
 brackets = {'(': ')', '[': ']'}
 
 while True:
