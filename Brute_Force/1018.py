@@ -25,8 +25,8 @@ case_2 = [
 ]
 matrix = [list(input()) for _ in range(v)]
 
-for i in range(v-7):    # [0, 1, 2]
-    for j in range(h - 7):  # [0, 1, 2, 3, 4, 5]
+for i in range(v-7):    
+    for j in range(h - 7):
         ans_1 = 0
         ans_2 = 0
         for x in range(i, i+8):
