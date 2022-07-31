@@ -31,7 +31,7 @@ while queue:
             # 만약 next에 사다리가 연결됐다면 이동
             if next in ladder.keys():
                 next = ladder[next]
-            # 만약 next에 뱀에 연결됐다면 이동
+            # 만약 next에 뱀이 연결됐다면 이동
             elif next in snake.keys():
                 next = snake[next]
             # 방문한적이 없는 곳이라면 방문 처리
