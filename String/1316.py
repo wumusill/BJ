@@ -22,3 +22,24 @@ for word in str_list:
         result += 1
 
 print(result)
+#############################################################################
+n = int(input())
+answer = 0
+
+for _ in range(n):
+    word = input()
+    already = []
+    flag = True
+    for i in range(len(word)):
+        if word[i] not in already:
+            already.append(word[i])
+        else:
+            if word[i] == word[i - 1]:
+                continue
+            else:
+                flag = False
+                break
+    if flag:
+        answer += 1
+
+print(answer)
