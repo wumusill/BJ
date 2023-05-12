@@ -27,3 +27,29 @@ for _ in range(t):
     for i in range(1, n):
         ans = max(ans, abs(q[i] - q[i - 1]))
     print(ans)
+
+##############################################################################
+import sys
+from collections import deque
+
+t = int(sys.stdin.readline())
+for _ in range(t):
+    n = int(sys.stdin.readline())
+
+    # 내림차순 정렬
+    l = sorted(map(int, sys.stdin.readline().split()), reverse=True)
+
+    # 앞뒤로 삽입하기 위해 deque 활용
+    q = deque([l[0]])
+    ans = -1
+    for i in range(1, n):
+        if i % 2 == 0:
+            q.appendleft(l[i])
+            res = abs(q[0] - q[1])
+            ans = max(ans, res)
+        else:
+            q.append(l[i])
+            res = abs(q[-1] - q[-2])
+            ans = max(ans, res)
+
+    print(ans)
