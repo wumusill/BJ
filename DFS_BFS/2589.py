@@ -70,9 +70,9 @@ def solution():
                     if d > dist:
                         dist = d
                         points.append((x, y))
-                    for i in range(4):
-                        nx = x + dx[i]
-                        ny = y + dy[i]
+                    for k in range(4):
+                        nx = x + dx[k]
+                        ny = y + dy[k]
                         if nx < 0 or ny < 0 or nx >= n or ny >= m:
                             continue
                         if visited[nx][ny] and graph[nx][ny] == 'L':
@@ -81,6 +81,7 @@ def solution():
 
     res = 0
     # 최장 거리 좌표 순회
+    # 최장 거리 구하기
     for i, j in points:
         visited = [[True for _ in range(m)] for _ in range(n)]
         visited[i][j] = False
@@ -89,9 +90,9 @@ def solution():
             x, y, d = q.popleft()
             if d > res:
                 res = d
-            for i in range(4):
-                nx = x + dx[i]
-                ny = y + dy[i]
+            for k in range(4):
+                nx = x + dx[k]
+                ny = y + dy[k]
                 if nx < 0 or ny < 0 or nx >= n or ny >= m:
                     continue
                 if visited[nx][ny] and graph[nx][ny] == 'L':
@@ -102,3 +103,46 @@ def solution():
 
 
 print(solution())
+###########################################################################
+def solution():
+    L, W = map(int, input().split())
+    board = [tuple([*input().rstrip()]) for _ in range(L)]
+    visited = [[False] * W for _ in range(L)]
+    delta = [(-1, 0), (0, 1), (1, 0), (0, -1)]
+    points = []
+    dist = 0
+    for i in range(L):
+        for j in range(W):
+            if board[i][j] == 'L' and not visited[i][j]:
+                visited[i][j] = True
+                queue = [(i, j, 0)]
+                while queue:
+                    r, c, d = queue.pop(0)
+                    if d > dist:
+                        dist = d
+                        points.append((r, c))
+                    for dr, dc in delta:
+                        nr, nc = r + dr, c + dc
+                        if L > nr >= 0 and W > nc >= 0:
+                            if board[nr][nc] == 'L' and not visited[nr][nc]:
+                                visited[nr][nc] = True
+                                queue.append((nr, nc, d + 1))
+    res = 0
+    for i, j in points:
+        visited = [[False] * W for _ in range(L)]
+        visited[i][j] = True
+        queue = [(i, j, 0)]
+        while queue:
+            r, c, d = queue.pop(0)
+            if d > res:
+                res = d
+            for dr, dc in delta:
+                nr, nc = r + dr, c + dc
+                if L > nr >= 0 and W > nc >= 0:
+                    if board[nr][nc] == 'L' and not visited[nr][nc]:
+                        visited[nr][nc] = True
+                        queue.append((nr, nc, d + 1))
+    print(res)
+
+
+solution()
