@@ -5,8 +5,8 @@ b = ' ' + sys.stdin.readline().rstrip()
 
 dp = [[0 for _ in range(len(b))] for _ in range(len(a))]
 
-for i in range(1, len(b)):
-    for j in range(1, len(a)):
+for i in range(1, len(a)):
+    for j in range(1, len(b)):
         if a[i] == b[j]:
             dp[i][j] = dp[i - 1][j - 1] + 1
         else:
