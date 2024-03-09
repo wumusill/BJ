@@ -21,8 +21,8 @@ def query(tree, start_index, end_index):
         if end_index % 2 == 0:
             result = min(result, tree[end_index])
 
-        start_idx = (start_index + 1) // 2
-        end_idx = (end_index - 1) // 2
+        start_index = (start_index + 1) // 2
+        end_index = (end_index - 1) // 2
 
     return result
 
